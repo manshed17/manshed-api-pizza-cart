@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="pizza-cart-api.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+      
+    </script>
+</head>
+<body>
+    
+    
+    <div class="container" x-data="pizzaCartWithAPIWidget" >
+        <h2 x-show="titleHide">manshed Perfect Pizza</h2>
+        <div x-show="feature" x-text="message"></div><br>
+       
+        <span x-text="cartID"></span><br>
+ 
+       
+        
+        
+     <br>  <div x-show="clearAtPay">
+            who is buying pizzas: <input type="text" x-model="username">
+       </div> <br>
+
+       <div>
+        <strong x-text="appreciation"></strong>
+            <strong x-show="clearAtPay">
+                cart total: <strong x-text="cart.total.toFixed(2)"></strong>
+            </strong>
+            <div x-show="cart.total >0">
+            <div class="cart">
+                <table>
+                    
+                        <tr>
+                            <th>Flavour</th>
+                            <th>Qty</th>
+                            <th></th>
+                            <th></th>
+                            <th>Total</th>
+                        </tr>
+                        
+                        <template x-for="pizza in cart.pizzas" >
+                            <tr>
+                                
+                                <td x-text="pizza.flavour"></td>
+                                <td x-text="pizza.qty"></td>
+                                <td>
+                                    <button x-show="feature" @click="add(pizza)">+</button>
+                                </td>
+                                <td>
+                                    <button x-show="feature" @click="subPizzas(pizza)">-</button>
+                                </td>
+                                <td x-text="pizza.total.toFixed(2)"></td>
+                                
+                               
+                                
+                            </tr>
+                           
+                           
+                    </template>
+                    <tr >
+                        <td colspan="5" >
+                            <div x-show="cart.total>0">
+                        <button class="checkb" x-show="!payNow" @click="allPizzas=false, feature=false,editCart=true, buys=false, payNow=true, checkb=false"> 
+                            <img src="https://pngimg.com/uploads/shopping_cart/shopping_cart_PNG49.png" width=30 alt="">
+                            checkout
+                        </button>
+                    </div>
+                        </td>
+                        <td>
+                            <div x-show="payNow">
+                                <strong class="feedback" @click="payNow=false" x-text="returnFeedback"><br></strong>
+                                <div>
+                                    <label x-show="editCart" for="">Payment Amount</label>
+                                    <input x-show="editCart" class="total" type="number" placeholder="amount to pay" x-model="paymentAmount">
+                                </div><br>
+                                
+                            <button x-show="editCart" @click="makePayment()">pay</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <button x-show="editCart" @click="allPizzas=true, feature=true, editCart=false, buys=true, payNow=false, checkb=true">edit cart</button>
+               
+            </div>
+            
+            
+            </div>
+       </div>
+            <div class="featuredPizzas" x-show="feature">
+                <div class="featuredSmall">
+                <div>
+                    <td>
+                    <strong x-text="smallpizzas.flavour"></strong><br>
+                    <img src="small.png" alt="">
+                    <strong>small featured 1</strong>
+                        <div x-text="smallpizzas.price"></div>
+                        
+                    <div>
+                        <button x-show="buys" @click="featured(pizzas)">buy</button>
+                    </div>
+                </div>
+                </div>
+                <div class="featuredMedium">
+                <strong x-text="mediumFeatured.flavour"></strong><br>
+                <img src="medium.png" alt="">
+                <strong>Medium featured</strong>
+                    <div x-text="mediumFeatured.price"></div>
+                   
+                <div>
+                    <button x-show="buys" @click="add(mediumFeatured)">buy</button>
+                </div>
+            </div>
+
+            <div class="featuredLarge">
+                <strong x-text="largeFeatured.flavour"></strong><br>
+                <img src="large.png" alt="">
+                <strong>Large featured</strong>
+                   <div x-text="largeFeatured.price"></div>
+                    
+                <div>
+                    <button x-show="buys" @click="add(largeFeatured)">buy</button>
+                </div>
+            </div>
+        </div>
+            <div x-show="allPizzas">
+            <table class="beta">
+
+                <template class="apipizzas" x-for="pizza in pizzas">
+                    
+                    <tr class="col">
+                        <td >
+                            <img x-bind:src="pizzaImage(pizza)" alt="">
+                        </td>
+                        <td x-text="pizza.flavour"></td>
+                        <td x-text="pizza.size"></td>
+                        <td x-text="pizza.price"></td>
+                        <td>
+                            <button x-show="buys" @click="add(pizza)">buy</button>
+                        </td>
+                        
+                    </tr>
+                </template>
+            </table>
+        </div>
+           
+    </div>
+</body>
+</html>

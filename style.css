@@ -1,0 +1,96 @@
+
+.col{
+    background-color: orange;
+}
+.beta tr:nth-child(odd){
+    background-color: yellow;
+}
+body{
+    background-color: yellow
+    
+    
+}
+        .cart{
+            background-color: palevioletred;
+            padding: 1px;
+            border: 1px solid;
+            width: fit-content;
+        }
+        
+
+img {
+margin: auto;
+display: block;
+}
+@media(min-width: 760px) {
+.featuredPizzas{  
+display: flex; 
+width: 50%;  
+}
+table{
+    width: 50%;
+}
+
+}
+.featuredSmall{
+border: 2px solid;
+padding: 1em;
+margin: 1em;
+border-radius: 1em;
+background-color: orangered;
+border-radius: 1em;
+flex: 1;
+}
+
+
+
+
+.featuredLarge{
+border: 2px solid;
+padding: 1em;
+margin: 1em;
+border-radius: 1em;
+background-color: brown;
+border-radius: 1em;
+flex: 1;
+
+
+
+}
+
+.featuredMedium{
+border: 2px solid;
+padding: 1em;
+margin: 1em;
+border-radius: 1em;
+background-color: palevioletred;
+border-radius: 1em;
+flex: 1;
+
+
+
+
+}
+
+
+h2{text-align: center;}
+    
+.checkb, button{
+    /* background-color: orange; */
+    padding: 0.5em;
+}
+
+.checkb:hover, button:hover{
+    background-color: yellow;
+}
+
+.blankRow{
+    height: 10px;
+    
+}
+
+.message{
+    background-color: burlywood;
+    width: fit-content;
+    
+}
