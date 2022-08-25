@@ -10,11 +10,14 @@ body{
     
     
 }
+.feedback{
+    color: red;
+}
         .cart{
-            background-color: palevioletred;
+            /* background-color: palevioletred; */
             padding: 1px;
             border: 1px solid;
-            width: fit-content;
+            width: 50%;
         }
         
 

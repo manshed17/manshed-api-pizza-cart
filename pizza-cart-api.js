@@ -37,7 +37,7 @@ document.addEventListener('alpine:init', () => {
         },
         
         createCart(){
-            return axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/create?username' + this.username)
+            return axios.get('https://pizza-cart-api.herokuapp.com/api/pizza-cart/create?username=shadrack')
             },
         
         showCart(){
@@ -58,6 +58,12 @@ document.addEventListener('alpine:init', () => {
         payNow:false,
         returnFeedback:'',
         makePayment(){
+          const params = {cart_code: this.cartID,
+            amount:this.paymentAmount
+          }
+          // amount = this.paymentAmount;
+          axios.post('https://pizza-cart-api.herokuapp.com/api/pizza-cart/pay', params)
+          .then(()=>{
           if(!this.paymentAmount){
             this.returnFeedback = 'please enter amount'
         }
@@ -65,7 +71,7 @@ document.addEventListener('alpine:init', () => {
             this.returnFeedback = 'Sorry - that is not enough money!'
         }
         else{
-            this.returnFeedback = 'Enjoy your pizzas'
+            this.returnFeedback = 'Payment successful, Enjoy your pizzas!!'
             this.editCart=false
             
         
@@ -84,8 +90,8 @@ document.addEventListener('alpine:init', () => {
         }, 5000)
         
 
-    }
-  },
+    }}
+          )},
  
   
     clearCart(){
@@ -98,7 +104,7 @@ document.addEventListener('alpine:init', () => {
         message : '',
         appreciation:'',
         pizzas :[],
-        username: 'shadrack',
+        username:'shadrack',
         paymentAmount:0,
         cartID:'',
         editCart: false,
