@@ -3,10 +3,10 @@
     background-color: orange;
 }
 .beta tr:nth-child(odd){
-    background-color: yellow;
+    background-color: whitesmoke;
 }
 body{
-    background-color: yellow
+    background-color: whitesmoke;
     
     
 }
